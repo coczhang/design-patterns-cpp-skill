@@ -1,45 +1,4 @@
 # design-patterns-cpp Skill
-## 安装
-
-在仓库根目录执行：
-
-```powershell
-.\.agents-skill-cache\install_design_patterns_cpp_skill.ps1
-```
-
-如果 `.agents\skills\design-patterns-cpp` 已存在，并希望先备份旧版本再安装：
-
-```powershell
-.\.agents-skill-cache\install_design_patterns_cpp_skill.ps1 -BackupExisting
-```
-
-安装目标路径：
-
-```text
-.agents/skills/design-patterns-cpp/
-```
-
-## 替换已安装版本
-
-如果已经安装过旧版本，并希望使用缓存目录中的优化版替换 `.agents` 下的版本，执行：
-
-```powershell
-.\.agents-skill-cache\replace_installed_design_patterns_cpp_skill.ps1
-```
-
-也可以使用当前推荐的缓存应用脚本：
-
-```powershell
-.\.agents-skill-cache\apply_cached_design_patterns_cpp_skill.ps1
-```
-
-该脚本会先把当前 `.agents\skills\design-patterns-cpp` 备份到：
-
-```text
-.agents-skill-backups/
-```
-
-然后再把 `.agents-skill-cache\skills\design-patterns-cpp` 复制到 `.agents\skills\design-patterns-cpp`。
 
 ## Skill 作用
 
