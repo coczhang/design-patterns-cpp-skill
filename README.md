@@ -1,21 +1,4 @@
 # design-patterns-cpp Skill
-
-本仓库根据 `设计模式Skill设计文档.docx` 生成了一个可用于 Codex 的 C++/Qt 设计模式 Skill。
-
-由于当前环境写入 `.agents/skills` 时返回“拒绝访问”，生成结果已放在 `.agents` 的同级缓存目录：
-
-```text
-.agents-skill-cache/
-  apply_cached_design_patterns_cpp_skill.ps1
-  install_design_patterns_cpp_skill.ps1
-  replace_installed_design_patterns_cpp_skill.ps1
-  skills/
-    design-patterns-cpp/
-      SKILL.md
-      agents/openai.yaml
-      references/
-```
-
 ## 安装
 
 在仓库根目录执行：
