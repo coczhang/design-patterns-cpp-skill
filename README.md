@@ -1,14 +1,43 @@
 # design-patterns-cpp Skill
 
-## 安装位置
+## 如何应用
 
-当前仓库中的正式 skill 位于：
+### 当前项目使用
+
+本仓库已经把 skill 放在当前项目的 `.agents` 目录中：
 
 ```text
 .agents/skills/design-patterns-cpp/
 ```
 
-在 Codex 中可通过 `$design-patterns-cpp` 显式调用该 skill。
+在当前仓库中打开 Codex 后，可以直接显式调用：
+
+```text
+使用 $design-patterns-cpp，帮我分析这个 Qt 模块应该采用什么设计模式或架构。
+```
+
+也可以用更具体的问题触发它：
+
+```text
+使用 $design-patterns-cpp，帮我设计一个多厂商 SDK 接入架构，要求包含 Adapter、Factory、Qt 生命周期和过度设计检查。
+```
+
+### 所有项目可用
+
+如果希望所有 Codex 项目都能使用这个 skill，把整个 skill 目录复制到用户级 Codex skills 目录：
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out-Null
+Copy-Item -LiteralPath ".agents\skills\design-patterns-cpp" -Destination "$env:USERPROFILE\.codex\skills\design-patterns-cpp" -Recurse -Force
+```
+
+复制完成后，新开的 Codex 会话即可在任意项目中使用：
+
+```text
+使用 $design-patterns-cpp，帮我审查这个 C++/Qt 模块是否存在过度设计。
+```
+
+如果之后更新了仓库内的 skill，再执行同一条 `Copy-Item` 命令即可覆盖用户级版本。
 
 ## Skill 作用
 
