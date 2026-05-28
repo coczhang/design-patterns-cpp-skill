@@ -1,0 +1,7 @@
+interface:
+  display_name: "C++/Qt Design Patterns"
+  short_description: "C++/Qt patterns without overengineering."
+  default_prompt: "Use $design-patterns-cpp to choose an appropriate C++/Qt design pattern, show class design and code, and check overengineering risk."
+
+policy:
+  allow_implicit_invocation: true
