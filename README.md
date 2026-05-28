@@ -1,5 +1,15 @@
 # design-patterns-cpp Skill
 
+## 安装位置
+
+当前仓库中的正式 skill 位于：
+
+```text
+.agents/skills/design-patterns-cpp/
+```
+
+在 Codex 中可通过 `$design-patterns-cpp` 显式调用该 skill。
+
 ## Skill 作用
 
 `design-patterns-cpp` 面向 C++17 / Qt 5.14+ / Qt 6.x 项目，帮助 Codex 在真实工程中选择、解释、实现、审查和重构设计模式。
@@ -22,6 +32,7 @@
 - 提供 QtTest / gtest 示例，帮助验证模式重构没有改变行为。
 - 通过代码审查 smell 清单识别“该用模式”和“过度设计”两类问题。
 - 按需读取本地真实案例语料，结合你的设计模式文章生成更贴近实际工程的说明和代码。
+- 支持 Qt 应用架构设计，包括分层架构、Model/View、MVP/MVVM、插件架构、线程/Worker 架构和 CMake 模块边界。
 
 ## 当前优化点
 
@@ -36,8 +47,6 @@
 
 ## 最新增强点
 
-本轮增强继续只写入 `.agents-skill-cache`，可通过 `apply_cached_design_patterns_cpp_skill.ps1` 备份并替换 `.agents` 下的已安装版本。
-
 新增能力包括：
 
 - 新增 `pattern-combination-guide.md`：说明 Adapter + Factory、Strategy + Factory、Command + Memento、Facade + Adapter、Mediator + signals/slots、State + Strategy 等组合的适用边界。
@@ -50,7 +59,7 @@
 
 ## 本地案例语料增强
 
-本轮更新将同级目录 `设计模式/` 中的 22 篇 Markdown 案例文章接入 skill，形成“规则 + 模板 + 真实案例语料”的版本。当前 `.agents/skills/design-patterns-cpp` 共包含 42 个文件。
+本轮更新将同级目录 `设计模式/` 中的 22 篇 Markdown 案例文章接入 skill，形成“规则 + 模板 + 真实案例语料”的版本。
 
 案例文件被复制到：
 
@@ -86,6 +95,40 @@ visitor-pattern.md
 Local case used: references/cases/<file-name>.md
 ```
 
+## Qt 架构设计增强
+
+新增 Qt 架构设计能力包括：
+
+- `qt-architecture-patterns.md`：Qt 架构总览与路由，先判断架构风格，再选择 GoF 模式。
+- `qt-layered-architecture.md`：UI、Presentation、Application Service、Domain、Infrastructure 分层边界。
+- `qt-model-view-guide.md`：`QAbstractItemModel`、`QSortFilterProxyModel`、delegate、view 的 Model/View 架构。
+- `qt-mvp-mvvm-guide.md`：Qt Widgets 中的 MVP 与 QML/Qt Quick 中的 MVVM 取舍。
+- `qt-plugin-architecture.md`：`QPluginLoader`、插件接口、`Q_PLUGIN_METADATA`、元数据和版本管理。
+- `qt-threading-architecture.md`：Worker Object、`QThreadPool`、`QtConcurrent`、任务队列和跨线程 signals/slots。
+- `qt-module-boundaries.md`：CMake target、include 方向、模块拆分和依赖边界。
+
+适用场景示例：
+
+```text
+使用 $design-patterns-cpp，帮我设计一个 Qt 工业客户端的分层架构。
+要求包含 UI、业务服务、多厂商 SDK Adapter、数据库 Repository、后台 Worker，并说明 CMake target 如何拆分。
+```
+
+```text
+使用 $design-patterns-cpp，帮我判断这个设备列表和告警列表应该用 QTableWidget 还是 QAbstractTableModel。
+请给出 Model/View 架构、proxy model、delegate 和测试建议。
+```
+
+```text
+使用 $design-patterns-cpp，帮我设计一个可动态加载算法插件的 Qt 插件架构。
+要求包含插件接口、QPluginLoader、插件元数据、版本兼容和错误处理。
+```
+
+```text
+使用 $design-patterns-cpp，帮我设计一个不阻塞 UI 的图像识别 Worker 架构。
+要求说明 QThread worker-object、跨线程信号、对象销毁和取消流程。
+```
+
 ## 使用方式
 
 在 Codex 中显式调用：
@@ -115,6 +158,13 @@ Local case used: references/cases/<file-name>.md
 - `anti-overengineering-guide.md`：判断是否不该使用模式。
 - `qt-pattern-examples.md`：Qt 工业软件常见场景映射。
 - `qt-code-templates.md`：高频 C++/Qt 模式代码模板。
+- `qt-architecture-patterns.md`：Qt 应用架构总览与 reference 路由。
+- `qt-layered-architecture.md`：Qt 分层架构和 Service/Facade 边界。
+- `qt-model-view-guide.md`：Qt Model/View 架构。
+- `qt-mvp-mvvm-guide.md`：Qt Widgets MVP 与 QML MVVM。
+- `qt-plugin-architecture.md`：Qt 插件架构。
+- `qt-threading-architecture.md`：Qt 线程、Worker 和异步任务架构。
+- `qt-module-boundaries.md`：CMake target、include 方向和模块边界。
 - `cpp-implementation-guide.md`：C++17、RAII、智能指针、QObject 生命周期规则。
 - `refactoring-safety-checklist.md`：真实项目重构前的安全检查清单。
 - `test-templates.md`：QtTest / gtest 测试模板。

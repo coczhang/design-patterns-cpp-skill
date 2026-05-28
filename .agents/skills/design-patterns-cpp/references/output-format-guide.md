@@ -52,12 +52,31 @@ Use the structure that matches the user's task. Keep answers practical and code-
 
 1. Business variation points
 2. Module boundaries
-3. Pattern combination
-4. Interface design
-5. Mermaid class diagram when it clarifies relationships
-6. Key code sketch
-7. Future extension path
-8. Overengineering check
+3. Qt architecture style, if applicable
+4. Pattern combination
+5. Interface design
+6. QObject ownership and thread-affinity notes
+7. CMake target/include direction
+8. Mermaid class diagram when it clarifies relationships
+9. Key code sketch
+10. Future extension path
+11. Overengineering check
+
+## Qt Architecture Design
+
+Use this structure for Qt project architecture questions:
+
+1. Application type and constraints.
+2. Change axes: UI, SDK vendors, protocols, algorithms, storage, plugins, threading, or data models.
+3. Recommended style: layered architecture, Model/View, MVP, MVVM, plugin architecture, event-driven, state-machine, worker/task, repository, or service/facade.
+4. Module and ownership boundaries.
+5. QObject lifetime and thread affinity.
+6. Public interfaces and data flow.
+7. CMake targets and include direction.
+8. Related GoF patterns.
+9. Migration plan.
+10. Tests and runtime diagnostics.
+11. Overengineering check.
 
 ## Real-Code Refactor Gate
 

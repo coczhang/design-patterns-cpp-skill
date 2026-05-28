@@ -1,11 +1,11 @@
 ---
 name: design-patterns-cpp
-description: Use this skill when selecting, explaining, implementing, reviewing, or refactoring C++17/Qt code with design patterns. Covers GoF 23 patterns plus Simple Factory, Qt signals/slots and QObject lifetime concerns, multi-vendor SDKs, protocol switching, image processing, undo/redo, state handling, architecture recommendations, code review, and anti-overengineering decisions.
+description: Use this skill when selecting, explaining, implementing, reviewing, or refactoring C++17/Qt code with design patterns and Qt application architecture. Covers GoF 23 patterns plus Simple Factory, Qt signals/slots and QObject lifetime concerns, Model/View, MVP/MVVM, layered architecture, plugin architecture, threading/worker architecture, module boundaries, multi-vendor SDKs, protocol switching, image processing, undo/redo, state handling, architecture recommendations, code review, and anti-overengineering decisions.
 ---
 
 # Design Patterns for C++ / Qt
 
-Act as a senior C++/Qt architect. Help the user decide whether a design pattern is useful, which pattern fits, how to implement it in maintainable C++17/Qt code, and how to avoid unnecessary abstraction.
+Act as a senior C++/Qt architect. Help the user decide whether a design pattern or Qt architecture style is useful, which pattern or architecture fits, how to implement it in maintainable C++17/Qt code, and how to avoid unnecessary abstraction.
 
 The goal is not to force patterns into code. Prefer the simplest design that keeps the code readable, testable, and extensible for the actual change points in the project.
 
@@ -13,7 +13,7 @@ The goal is not to force patterns into code. Prefer the simplest design that kee
 
 1. Identify the real variation point: object creation, interchangeable algorithms, incompatible SDKs, event notification, state-driven behavior, undo/redo, UI coordination, subsystem complexity, or processing pipelines.
 2. Check whether a pattern is necessary. For nontrivial choices, use `references/pattern-decision-rubric.md` to score extension pressure versus complexity cost.
-3. Select the smallest pattern or pattern combination that solves the problem.
+3. Select the smallest pattern, pattern combination, or Qt architecture style that solves the problem.
 4. Explain why nearby alternatives are less suitable.
 5. For real code refactors, check migration safety, tests, ownership, thread affinity, and CMake impact before proposing broad changes.
 6. Provide class boundaries, ownership rules, extension points, and C++17/Qt implementation notes.
@@ -72,6 +72,13 @@ Load only the references needed for the task:
 - `references/pattern-decision-rubric.md`: score whether a pattern is justified now or should remain a simple design.
 - `references/pattern-combination-guide.md`: decide whether common pattern combinations are justified and how their boundaries should split.
 - `references/case-index.md`: locate local Markdown case articles from the repository `设计模式/` corpus; load specific `references/cases/*.md` files only when examples or real cases are needed.
+- `references/qt-architecture-patterns.md`: choose a Qt architecture style before choosing detailed GoF patterns.
+- `references/qt-layered-architecture.md`: design UI, presentation, application, domain, and infrastructure boundaries.
+- `references/qt-model-view-guide.md`: design Qt Model/View data presentation with models, proxy models, delegates, and views.
+- `references/qt-mvp-mvvm-guide.md`: choose MVP for Qt Widgets or MVVM for QML/binding-heavy UI.
+- `references/qt-plugin-architecture.md`: design `QPluginLoader` plugin interfaces, metadata, factories, and versioning.
+- `references/qt-threading-architecture.md`: design worker-object, task queue, `QThreadPool`, `QtConcurrent`, and cross-thread signal boundaries.
+- `references/qt-module-boundaries.md`: design CMake targets, include direction, module split, and dependency boundaries.
 - `references/anti-overengineering-guide.md`: decide whether a pattern is unnecessary and provide a simpler path.
 - `references/qt-pattern-examples.md`: map Qt industrial software scenarios to patterns and class names.
 - `references/qt-code-templates.md`: reuse C++/Qt templates for Adapter + Factory, Strategy + Factory, Command + Memento, State, and Mediator.
@@ -120,10 +127,28 @@ For explanations, include:
 6. Qt example when applicable
 7. Common mistakes
 
+For Qt architecture design, include:
+1. Application type and change axes
+2. Recommended architecture style
+3. Layer/module boundaries
+4. QObject ownership and thread affinity
+5. Key interfaces, services, models, plugins, or workers
+6. CMake target/include direction
+7. Relevant design patterns
+8. Migration and test plan
+9. Overengineering check
+
 ## High-Value Qt Scenarios
 
 - Multi-vendor NVR/AI SDK integration: Adapter + Factory + Strategy.
 - TCP/UDP/HTTP/WebSocket/serial switching: Strategy + Factory.
+- Device/application module split: layered architecture + Adapter + Facade.
+- Data-heavy tables, trees, logs, devices, alarms, and scan results: Qt Model/View.
+- Qt Widgets screen logic: MVP with presenters and application services.
+- QML or binding-heavy UI: MVVM with QObject view models and properties.
+- Runtime-loadable algorithms, vendors, protocols, or feature packs: Qt plugin architecture.
+- Background capture, decoding, AI inference, or SDK callbacks: Qt worker/threading architecture.
+- Large project organization: CMake module boundaries and inward dependency direction.
 - Scanner input over TCP, UDP, serial, or keyboard: Strategy + Factory + Qt signals.
 - Image processing algorithm switching: Strategy.
 - Borderless window, menu, toolbar, and shortcut actions: Command.
