@@ -88,7 +88,7 @@ Copy-Item -LiteralPath ".agents\skills\design-patterns-cpp" -Destination "$env:U
 
 ## 本地案例语料增强
 
-本轮更新将同级目录 `设计模式/` 中的 22 篇 Markdown 案例文章接入 skill，形成“规则 + 模板 + 真实案例语料”的版本。
+本轮更新将 `设计模式/` 中的 22 篇 Markdown 案例文章接入 skill，形成“规则 + 模板 + 真实案例语料”的版本。
 
 案例文件被复制到：
 
